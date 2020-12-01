@@ -1,39 +1,53 @@
 function read_file()
-    # Read file
+    """
+    Read the input for day 01 as integers
+    and sort
+    """
+    # Read file: O(n)
     lines = open("input_01.txt") do f
         readlines(f)
     end
 
-    # Parse into int and return
-    map(x -> parse(Int, x), lines)
+    # Parse into int and return: O(n) + O(nlogn)
+    map(x -> parse(Int, x), lines) |> sort
 end
 
 function part_one(lines)
-    ##### Part 1 #####
-    # Find two elements which sum to 2020
+    """
+    Find two elements which sum to 2020
+    O(n²logn)
+    """
     target = 2020
-    for i = 1:length(lines), j = 1:length(lines)
-        if i == j
-            continue
-        end
-
-        if lines[i] + lines[j] == target
-            return lines[i] * lines[j]
+    l = length(lines)
+    # Linear search through all items of lines 
+    # O(n)
+    for i ∈ 1:l
+        # Binary search for the counterpart
+        # O(nlogn)
+        indices = searchsorted(lines, target - lines[i])
+        # If returned indices are sequential, return answer
+        if indices.start ≤ indices.stop
+            return lines[i] * lines[indices.start]
         end
     end
 end
 
 function part_two(lines)
-    ##### Part 2 #####
-    # find three numbers which sum to 2020
+    """
+    Find three elements which sum to 2020
+    O(n³logn) 
+    """
     target = 2020
-    for i = 1:length(lines), j = 1:length(lines), k = 1:length(lines)
-        if i == j || j == k || i == k
-            continue
-        end
-
-        if lines[i] + lines[j] + lines[k] == target
-            return lines[i] * lines[j] * lines[k]
+    l = length(lines)
+    # Linear search through all items of lines twice
+    # O(n²)
+    for i ∈ 1:l, j ∈ 1:l
+        # Binary search for the counterpart
+        # O(nlogn)
+        indices = searchsorted(lines, target - lines[i] - lines[j])
+        # If returned indices are sequential, return answer
+        if indices.start ≤ indices.stop
+            return lines[i] * lines[j] * lines[indices.start]
         end
     end
 end
