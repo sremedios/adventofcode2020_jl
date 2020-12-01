@@ -1,3 +1,12 @@
+function read_file()
+    # Read file
+    lines = open("input_01.txt") do f
+        readlines(f)
+    end
+
+    # Parse into int and return
+    map(x -> parse(Int, x), lines)
+end
 
 function part_one(lines)
     ##### Part 1 #####
@@ -17,6 +26,7 @@ end
 function part_two(lines)
     ##### Part 2 #####
     # find three numbers which sum to 2020
+    target = 2020
     for i = 1:length(lines), j = 1:length(lines), k = 1:length(lines)
         if i == j || j == k || i == k
             continue
@@ -27,11 +37,3 @@ function part_two(lines)
         end
     end
 end
-
-# Read file
-lines = open("input_01.txt") do f
-    readlines(f)
-end
-
-# Parse into int
-lines = map(x -> parse(Int, x), lines)
