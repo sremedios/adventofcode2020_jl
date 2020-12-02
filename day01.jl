@@ -4,7 +4,7 @@ function read_file()
     and sort
     """
     # Read file: O(n)
-    lines = open("input_01.txt") do f
+    lines = open("inputs\\input_01.txt") do f
         readlines(f)
     end
 
