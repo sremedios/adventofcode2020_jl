@@ -15,3 +15,11 @@ end
 lines = Day02.read_file()
 @benchmark Day02.part_one(lines)
 @benchmark Day02.part_two(lines)
+
+module Day03
+    include("day03.jl")
+end
+
+lines = Day03.read_file()
+@benchmark Day03.part_one(lines)
+@benchmark Day03.part_two(lines)

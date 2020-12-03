@@ -1,6 +1,6 @@
 function read_file()
     """
-    Read the input for day 01 as integers
+    Read the input for day 02 as integers
     and sort
     """
     # Read file: O(n)
