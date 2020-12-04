@@ -23,3 +23,11 @@ end
 lines = Day03.read_file()
 @benchmark Day03.part_one(lines)
 @benchmark Day03.part_two(lines)
+
+module Day04
+    include("day04.jl")
+end
+
+lines = Day04.read_file()
+@benchmark Day04.part_one(lines)
+@benchmark Day04.part_two(lines)
