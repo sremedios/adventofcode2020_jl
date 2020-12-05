@@ -31,3 +31,11 @@ end
 lines = Day04.read_file()
 @benchmark Day04.part_one(lines)
 @benchmark Day04.part_two(lines)
+
+module Day05
+    include("day05.jl")
+end
+
+lines = Day05.read_file()
+@benchmark Day05.part_one(lines)
+@benchmark Day05.part_two(lines)
